@@ -25,7 +25,7 @@ env:
   # renovate: depName=ghcr.io/siderolabs/nvidia-open-gpu-kernel-modules
   NVIDIA_OPEN_GPU_KERNEL_MODULES_VERSION: 535.129.03-v1.7.5
   # renovate: depName=ghcr.io/siderolabs/util-linux-tools
-  UTIL_LINUX_TOOLS_VERSION: 2.39.3
+  UTIL_LINUX_TOOLS_VERSION: 2.40.1
 
 jobs:
   check-releases:
