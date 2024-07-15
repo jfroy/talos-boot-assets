@@ -19,13 +19,13 @@ env:
   # renovate: depName=ghcr.io/siderolabs/amd-ucode
   AMD_UCODE_VERSION: 20240513
   # renovate: depName=ghcr.io/siderolabs/iscsi-tools
-  ISCSI_TOOLS_VERSION: v0.1.4
+  ISCSI_TOOLS_VERSION: v0.1.5
   # renovate: depName=ghcr.io/siderolabs/nvidia-container-toolkit
   NVIDIA_CONTAINER_TOOLKIT_VERSION: 535.129.03-v1.14.6
   # renovate: depName=ghcr.io/siderolabs/nvidia-open-gpu-kernel-modules
   NVIDIA_OPEN_GPU_KERNEL_MODULES_VERSION: 535.129.03-v1.7.5
   # renovate: depName=ghcr.io/siderolabs/util-linux-tools
-  UTIL_LINUX_TOOLS_VERSION: 2.39.3
+  UTIL_LINUX_TOOLS_VERSION: 2.40.1
 
 jobs:
   check-releases:
