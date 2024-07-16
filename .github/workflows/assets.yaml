@@ -24,7 +24,7 @@ env:
   # renovate: depName=ghcr.io/siderolabs/amd-ucode
   AMD_UCODE_VERSION: 20240513
   # renovate: depName=ghcr.io/siderolabs/iscsi-tools
-  ISCSI_TOOLS_VERSION: v0.1.4
+  ISCSI_TOOLS_VERSION: v0.1.5
   NVIDIA_CONTAINER_TOOLKIT_VERSION: v1.14.6
   NVIDIA_DRIVER_VERSION: 550.100
   # renovate: depName=ghcr.io/siderolabs/util-linux-tools
