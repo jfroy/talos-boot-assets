@@ -1,17 +1,23 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "major": {
     "dependencyDashboardApproval": true
   },
   "packageRules": [
     {
       "description": "Group updates into single PR",
-      "matchFileNames": [".github/workflows/talos-boot-assets.yaml"],
+      "matchFileNames": [
+        ".github/workflows/talos-boot-assets.yaml"
+      ],
       "groupName": "Talos boot assets"
     },
     {
-      "matchDatasources": ["docker"],
+      "matchDatasources": [
+        "docker"
+      ],
       "matchPackageNames": [
         "ghcr.io/siderolabs/intel-ucode",
         "ghcr.io/siderolabs/i915-ucode"
@@ -19,9 +25,12 @@
       "versioning": "regex:^(?<major>\\d{4})(?<minor>\\d{2})(?<patch>\\d{2})\\.?(?<build>\\d+)?$"
     }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["^.github/workflows/.+\\.ya?ml$"],
+      "customType": "regex",
+      "fileMatch": [
+        "^.github/workflows/.+\\.ya?ml$"
+      ],
       "matchStrings": [
         "#\\s?renovate: ?\\s+depName=(?<depName>.+?)?\\s(?:.*_(?:version|VERSION):\\s+(?<currentValue>.*))"
       ],
