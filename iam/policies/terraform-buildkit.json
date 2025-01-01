@@ -1,0 +1,89 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:*",
+                "iam:*",
+                "s3:*"
+            ],
+            "Resource": [
+                "arn:aws:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/buildkit*",
+                "arn:aws:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling",
+                "arn:aws:iam::*:instance-profile/buildkit",
+                "arn:aws:iam::*:policy/com.github.jfroy.buildkit",
+                "arn:aws:iam::*:policy/buildkit*",
+                "arn:aws:iam::*:role/buildkit",
+                "arn:aws:s3:::com.github.jfroy.buildkit"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "autoscaling:CreateAutoScalingGroup",
+            "Resource": "arn:aws:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/buildkit*",
+            "Condition": {
+                "StringLike": {
+                    "autoscaling:ResourceTag/Name": "buildkit*"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": "ec2:*",
+            "Resource": "arn:aws:ec2:us-west-2:*:*",
+            "Condition": {
+                "StringLike": {
+                    "ec2:ResourceTag/Name": "buildkit*"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:Create*",
+                "ec2:GetManagedPrefixListEntries",
+                "ec2:RunInstances"
+            ],
+            "Resource": "arn:aws:ec2:us-west-2:*:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "ec2:RunInstances",
+            "Resource": "arn:aws:ec2:us-west-2::image/*",
+            "Condition": {
+                "StringLike": {
+                    "ec2:ResourceTag/Name": "buildkit*"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": "secretsmanager:*",
+            "Resource": "*",
+            "Condition": {
+                "StringLike": {
+                    "secretsmanager:Name": "buildkit*"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": "secretsmanager:*",
+            "Resource": "arn:aws:secretsmanager:us-west-2:*:secret:buildkit*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:Describe*",
+                "ec2:Describe*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sts:DecodeAuthorizationMessage",
+            "Resource": "*"
+        }
+    ]
+}

@@ -74,3 +74,9 @@ The command line arguments are somewhat long, but here's my deployment for examp
 Note in particular the regular expressions for the container signature. The first group (of each regex) matches what you will get by using `cosign` inside a GitHub Action workflow to perform [identity-based](https://docs.sigstore.dev/cosign/signing/overview/) signing[^1]. The second group matches the signatures produced by SideroLabs for their extensions.
 
 [^1]: See also <https://edu.chainguard.dev/open-source/sigstore/how-to-keyless-sign-a-container-with-sigstore> and <https://edu.chainguard.dev/open-source/sigstore/cosign/an-introduction-to-cosign> for more information.
+
+## AWS buildkit
+
+The workflow uses AWS buildkit spot instance nodes (one for each architecture). The nodes are created
+on demand using Terraform when the workflow runs. The GitHub Actions worker and the AWS nodes are
+connected to a tailnet for secure connectivity.
