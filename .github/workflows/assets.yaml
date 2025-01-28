@@ -73,7 +73,7 @@ jobs:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           tags: tag:gha-talos-boot-assets
-          version: 1.78.0
+          version: 1.78.1
 
       - name: Generate tailscale keys
         id: ts-keys
