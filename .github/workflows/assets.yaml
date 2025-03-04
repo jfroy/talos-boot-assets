@@ -175,7 +175,7 @@ jobs:
         run: |
           mkdir -p _out
           registry="ghcr.io/${{ github.actor }}/siderolabs"
-          for target in ca-certificates base kernel nvidia-open-gpu-kernel-modules-production-pkg zfs-pkg; do
+          for target in ca-certificates base kernel mellanox-mstflint-pkg nvidia-open-gpu-kernel-modules-production-pkg zfs-pkg; do
             make $target \
               PLATFORM="linux/amd64,linux/arm64" \
               USERNAME="${{ github.actor }}" \
@@ -203,7 +203,7 @@ jobs:
           make _out/bldr
           registry="ghcr.io/${{ github.actor }}/siderolabs"
           crane export ghcr.io/siderolabs/extensions:${{ inputs.siderolabs_tag }} | tar x -C internal/extensions/
-          for target in nvidia-driver-production zfs; do
+          for target in mellanox-mstflint nvidia-driver-production zfs; do
             make $target \
               PLATFORM="linux/amd64,linux/arm64" \
               PKGS="${{ inputs.release_tag }}" \
