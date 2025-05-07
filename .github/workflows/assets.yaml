@@ -51,8 +51,8 @@ jobs:
       - name: Install crane
         uses: imjasonh/setup-crane@v0.4
 
-      - name: Setup terraform
-        uses: hashicorp/setup-terraform@v3
+      - name: Setup opentofu
+        uses: opentofu/setup-opentofu@v1
 
       - name: Set release branch
         id: set-rel
@@ -122,14 +122,14 @@ jobs:
       - name: Checkout workflow
         uses: actions/checkout@v4
 
-      - name: Terraform apply
-        id: terraform-apply
+      - name: tofu apply
+        id: tofu-apply
         run: |
-          terraform init
-          terraform apply -auto-approve \
+          tofu init
+          tofu apply -auto-approve \
             -var "ts_auth_key=${{ steps.ts-keys.outputs.ts_auth_key }}"
-          instance_amd64_id=$(terraform output --raw instance_amd64_id)
-          instance_arm64_id=$(terraform output --raw instance_arm64_id)
+          instance_amd64_id=$(tofu output --raw instance_amd64_id)
+          instance_arm64_id=$(tofu output --raw instance_arm64_id)
           attempt=0
           while ! tailscale ip $instance_amd64_id; do
               attempt=$((attempt + 1))
@@ -153,10 +153,10 @@ jobs:
         uses: docker/setup-buildx-action@v3
         with:
           driver: remote
-          endpoint: tcp://${{ steps.terraform-apply.outputs.instance_amd64_id }}:9999
+          endpoint: tcp://${{ steps.tofu-apply.outputs.instance_amd64_id }}:9999
           platforms: linux/amd64
           append: |
-            - endpoint: tcp://${{ steps.terraform-apply.outputs.instance_arm64_id }}:9999
+            - endpoint: tcp://${{ steps.tofu-apply.outputs.instance_arm64_id }}:9999
               platforms: linux/arm64
 
       - name: Checkout pkgs
@@ -281,8 +281,8 @@ jobs:
           fq_image="$registry/talosctl:${{ inputs.release_tag }}@$(jq -j .\"containerimage.digest\" _out/meta)"
           cosign sign --yes --recursive "$fq_image"
 
-      - name: Terraform destroy
+      - name: tofu destroy
         if: ${{ always() }}
         run: |
-          terraform destroy -auto-approve \
+          tofu destroy -auto-approve \
             -var "ts_auth_key=${{ steps.ts-keys.outputs.ts_auth_key }}"
