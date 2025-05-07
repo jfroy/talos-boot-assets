@@ -252,7 +252,7 @@ jobs:
         run: |
           mkdir -p _out
           registry="ghcr.io/${{ github.actor }}/siderolabs"
-          for target in imager installer; do
+          for target in imager installer-base installer; do
             make $target \
               PLATFORM="linux/amd64,linux/arm64" \
               PKG_KERNEL="$registry/kernel:${{ inputs.release_tag }}" \
