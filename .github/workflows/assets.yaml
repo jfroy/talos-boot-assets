@@ -170,7 +170,7 @@ jobs:
         run: |
           mkdir -p _out
           registry="ghcr.io/${{ github.actor }}/siderolabs"
-          for target in ca-certificates base kernel mellanox-mstflint-pkg nvidia-open-gpu-kernel-modules-production-pkg zfs-pkg; do
+          for target in ca-certificates kernel mellanox-mstflint-pkg nvidia-open-gpu-kernel-modules-production-pkg zfs-pkg; do
             make $target \
               PLATFORM="linux/amd64,linux/arm64" \
               USERNAME="${{ github.actor }}" \
