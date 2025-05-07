@@ -25,11 +25,6 @@ on:
         type: boolean
         default: true
         required: false
-      build_nvidia_driver_container:
-        description: Build NVIDIA driver container
-        type: boolean
-        default: false
-        required: false
 
 concurrency:
   group: ${{ github.actor }}-build
