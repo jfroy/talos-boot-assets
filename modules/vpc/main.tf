@@ -51,15 +51,3 @@ resource "aws_route_table_association" "buildkit" {
   subnet_id      = aws_subnet.buildkit[count.index].id
   route_table_id = aws_route_table.buildkit.id
 }
-
-resource "aws_vpc_endpoint" "buildkit_s3" {
-  vpc_id            = aws_vpc.buildkit.id
-  service_name      = "com.amazonaws.${data.aws_region.current.name}.s3"
-  vpc_endpoint_type = "Gateway"
-
-  route_table_ids = [for rt_assoc in aws_route_table_association.buildkit : rt_assoc.route_table_id]
-
-  tags = {
-    Name = "buildkit-s3"
-  }
-}

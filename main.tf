@@ -10,13 +10,6 @@ module "iam" {
   source = "./modules/iam"
 }
 
-module "s3" {
-  source            = "./modules/s3"
-  bucket_name       = "com.github.jfroy.buildkit"
-  ec2_instance_role = module.iam.iam_role_name
-  vpc_id            = module.vpc.vpc_id
-}
-
 module "ec2-sg" {
   source = "./modules/ec2-sg"
   vpc_id = module.vpc.vpc_id

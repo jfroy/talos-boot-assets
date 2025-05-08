@@ -5,8 +5,7 @@
             "Effect": "Allow",
             "Action": [
                 "autoscaling:*",
-                "iam:*",
-                "s3:*"
+                "iam:*"
             ],
             "Resource": [
                 "arn:aws:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/buildkit*",
@@ -14,8 +13,7 @@
                 "arn:aws:iam::*:instance-profile/buildkit",
                 "arn:aws:iam::*:policy/com.github.jfroy.buildkit",
                 "arn:aws:iam::*:policy/buildkit*",
-                "arn:aws:iam::*:role/buildkit",
-                "arn:aws:s3:::com.github.jfroy.buildkit"
+                "arn:aws:iam::*:role/buildkit"
             ]
         },
         {
