@@ -109,7 +109,7 @@ jobs:
           echo "ts_auth_key=$ts_auth_key" >> $GITHUB_OUTPUT
 
       - name: Configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: arn:aws:iam::992382661722:role/talos-boot-assets-gha-terraform-buildkit
           aws-region: us-west-2
