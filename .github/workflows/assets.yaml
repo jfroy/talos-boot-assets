@@ -115,7 +115,7 @@ jobs:
           aws-region: us-west-2
 
       - name: Checkout workflow
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: tofu apply
         id: tofu-apply
@@ -156,7 +156,7 @@ jobs:
 
       - name: Checkout pkgs
         if: ${{ !failure() && !cancelled() && inputs.build_pkgs }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: pkgs
           repository: jfroy/siderolabs-pkgs
@@ -184,7 +184,7 @@ jobs:
 
       - name: Checkout extensions
         if: ${{ !failure() && !cancelled() && (inputs.build_extensions || steps.build-pkgs.conclusion == 'success') }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: extensions
           repository: jfroy/siderolabs-extensions
@@ -234,7 +234,7 @@ jobs:
 
       - name: Checkout talos
         if: ${{ !failure() && !cancelled() && (inputs.build_talos || steps.build-pkgs.conclusion == 'success') }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: talos
           repository: jfroy/siderolabs-talos
