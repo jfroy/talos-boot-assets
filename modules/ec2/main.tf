@@ -48,7 +48,7 @@ resource "aws_launch_template" "amd64" {
 
     vcpu_count {
       min = 32
-      max = 64
+      max = 32
     }
 
     memory_mib {
@@ -103,7 +103,7 @@ resource "aws_launch_template" "arm64" {
 
     vcpu_count {
       min = 32
-      max = 64
+      max = 32
     }
 
     memory_mib {
