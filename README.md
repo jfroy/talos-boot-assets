@@ -77,6 +77,8 @@ Note in particular the regular expressions for the container signature. The firs
 
 ## AWS buildkit
 
-The workflow uses AWS buildkit spot instance nodes (one for each architecture). The nodes are created
-on demand using Terraform when the workflow runs. The GitHub Actions worker and the AWS nodes are
-connected to a tailnet for secure connectivity.
+The workflow uses AWS buildkit spot instance nodes (one for each architecture). The nodes are created on demand using Terraform when the workflow runs. The GitHub Actions worker and the AWS nodes are connected to a tailnet for secure connectivity.
+
+### AWS AMI
+
+The `ami` directory contains a Packer project to build the AMI used by the spot instances. Run `packer build ami/buildkit.pkr.hcl` to build a new set of AMIs (one per architecture). You will need to setup authn per the [Amazon plugin documentation](https://developer.hashicorp.com/packer/integrations/hashicorp/amazon#authentication).
