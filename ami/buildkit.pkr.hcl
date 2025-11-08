@@ -29,7 +29,7 @@ source "amazon-ebs" "buildkit-amd64" {
   force_deregister      = true
   instance_type         = "t2.micro"
   region                = var.region
-  source_ami            = "ami-055e3d4f0bbeb5878" # Amazon Linux 2023 amd64
+  source_ami            = "ami-0f84105987952c5fd" # Amazon Linux 2023 kernel-6.12 amd64
   ssh_username          = "ec2-user"
   tags                  = merge(local.common_tags, { Architecture = "amd64" })
 }
@@ -41,7 +41,7 @@ source "amazon-ebs" "buildkit-arm64" {
   force_deregister      = true
   instance_type         = "t4g.micro"
   region                = var.region
-  source_ami            = "ami-01167b661200e49e7" # Amazon Linux 2023 arm64
+  source_ami            = "ami-0e85b2ec3600b7f4d" # Amazon Linux 2023 kernel-6.12 arm64
   ssh_username          = "ec2-user"
   tags                  = merge(local.common_tags, { Architecture = "arm64" })
 }
