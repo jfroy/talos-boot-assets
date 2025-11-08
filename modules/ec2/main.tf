@@ -47,11 +47,13 @@ resource "aws_launch_template" "amd64" {
     bare_metal = "excluded"
 
     vcpu_count {
-      min = 32
+      min = 8
+      max = 32
     }
 
     memory_mib {
       min = 16384
+      max = 32768
     }
   }
 
@@ -100,11 +102,13 @@ resource "aws_launch_template" "arm64" {
     bare_metal = "excluded"
 
     vcpu_count {
-      min = 32
+      min = 8
+      max = 32
     }
 
     memory_mib {
       min = 16384
+      max = 32768
     }
   }
 
@@ -156,8 +160,8 @@ resource "aws_autoscaling_group" "amd64" {
 
   mixed_instances_policy {
     instances_distribution {
-      on_demand_percentage_above_base_capacity = 0
-      spot_allocation_strategy                 = "capacity-optimized"
+      on_demand_percentage_above_base_capacity = 100
+      spot_allocation_strategy                 = "lowest-price"
     }
 
     launch_template {
@@ -188,8 +192,8 @@ resource "aws_autoscaling_group" "arm64" {
 
   mixed_instances_policy {
     instances_distribution {
-      on_demand_percentage_above_base_capacity = 0
-      spot_allocation_strategy                 = "capacity-optimized"
+      on_demand_percentage_above_base_capacity = 100
+      spot_allocation_strategy                 = "lowest-price"
     }
 
     launch_template {
