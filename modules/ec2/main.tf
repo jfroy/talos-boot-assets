@@ -53,7 +53,7 @@ resource "aws_launch_template" "amd64" {
 
     memory_mib {
       min = 32768
-      max = 65536
+      max = 32768
     }
   }
 
@@ -108,7 +108,7 @@ resource "aws_launch_template" "arm64" {
 
     memory_mib {
       min = 32768
-      max = 65536
+      max = 32768
     }
   }
 
