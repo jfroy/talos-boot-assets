@@ -166,6 +166,7 @@ jobs:
       - name: Build pkgs
         id: build-pkgs
         if: ${{ !failure() && !cancelled() && inputs.build_pkgs }}
+        timeout-minutes: 120
         working-directory: ./pkgs
         run: |
           mkdir -p _out
@@ -193,6 +194,7 @@ jobs:
 
       - name: Build extensions
         if: ${{ !failure() && !cancelled() && (inputs.build_extensions || steps.build-pkgs.conclusion == 'success') }}
+        timeout-minutes: 120
         working-directory: ./extensions
         run: |
           make _out/bldr
@@ -217,6 +219,7 @@ jobs:
 
       - name: Build extensions manifest
         if: ${{ !failure() && !cancelled() && (inputs.build_extensions || steps.build-pkgs.conclusion == 'success') }}
+        timeout-minutes: 120
         working-directory: ./extensions
         run: |
           mkdir -p _out
@@ -243,6 +246,7 @@ jobs:
 
       - name: Build talos
         if: ${{ !failure() && !cancelled() && (inputs.build_talos || steps.build-pkgs.conclusion == 'success') }}
+        timeout-minutes: 120
         working-directory: ./talos
         run: |
           mkdir -p _out
@@ -262,6 +266,7 @@ jobs:
 
       - name: Build talosctl
         if: ${{ !failure() && !cancelled() && (inputs.build_talos || steps.build-pkgs.conclusion == 'success') }}
+        timeout-minutes: 120
         working-directory: ./talos
         run: |
           mkdir -p _out
