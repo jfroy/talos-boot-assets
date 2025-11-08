@@ -62,7 +62,7 @@ build {
 
   provisioner "shell" {
     inline = [<<EOF
-BUILDKIT_VERSION=0.18.1
+BUILDKIT_VERSION=0.25.2
 ARCH=$(uname -m)
 case "$ARCH" in
   x86_64)
