@@ -40,22 +40,9 @@ resource "aws_secretsmanager_secret_version" "buildkit" {
 }
 
 resource "aws_launch_template" "amd64" {
-  name     = "buildkit-amd64"
-  image_id = data.aws_ami.amd64.id
-
-  instance_requirements {
-    bare_metal = "excluded"
-
-    vcpu_count {
-      min = 32
-      max = 32
-    }
-
-    memory_mib {
-      min = 32768
-      max = 32768
-    }
-  }
+  name          = "buildkit-amd64"
+  image_id      = data.aws_ami.amd64.id
+  instance_type = "c6a.8xlarge"
 
   block_device_mappings {
     device_name = "/dev/xvda"
@@ -95,22 +82,9 @@ resource "aws_launch_template" "amd64" {
 }
 
 resource "aws_launch_template" "arm64" {
-  name     = "buildkit-arm64"
-  image_id = data.aws_ami.arm64.id
-
-  instance_requirements {
-    bare_metal = "excluded"
-
-    vcpu_count {
-      min = 32
-      max = 32
-    }
-
-    memory_mib {
-      min = 32768
-      max = 32768
-    }
-  }
+  name          = "buildkit-arm64"
+  image_id      = data.aws_ami.arm64.id
+  instance_type = "c6g.8xlarge"
 
   block_device_mappings {
     device_name = "/dev/xvda"
