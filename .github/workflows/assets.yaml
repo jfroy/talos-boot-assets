@@ -44,7 +44,7 @@ jobs:
         uses: sigstore/cosign-installer@v3
 
       - name: Install crane
-        uses: imjasonh/setup-crane@v0.4
+        uses: imjasonh/setup-crane@v0.5
 
       - name: Setup opentofu
         uses: opentofu/setup-opentofu@v1
